@@ -264,6 +264,12 @@ class DataObject extends ObjectStore
         $headers = $this->MetadataHeaders();
         $headers['Content-Type'] = $this->content_type;
 
+        if (!empty($this->extra_headers)) {
+            foreach ($this->extra_headers as $key => $value) {
+                $headers[$key] = $value;
+            }
+        }
+
         $response = $this->Service()->Request(
             $this->Url(),
             'POST',
