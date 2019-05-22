@@ -16,7 +16,7 @@ namespace OpenCloud\DNS;
  *
  * This is also used for PTR records.
  */
-class Record extends Object 
+class Record extends DnsObject 
 {
 
     public $ttl;
