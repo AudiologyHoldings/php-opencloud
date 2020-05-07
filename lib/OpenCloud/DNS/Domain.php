@@ -73,7 +73,8 @@ class Domain extends DnsObject
      */
     public function recordList($filter = array())
     {
-        return $this->getParent()->collection('OpenCloud\DNS\Record', null, $this, $filter);
+        $url = $this->url(Record::ResourceName(), $filter);
+        return $this->Parent()->Collection('\OpenCloud\DNS\Record', $url, $this, $filter);
     }
 
     /**
