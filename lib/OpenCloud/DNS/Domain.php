@@ -17,7 +17,7 @@ namespace OpenCloud\DNS;
  * Note that the `Subdomain` class is defined in this same file because of
  * mutual dependencies.
  */
-class Domain extends Object
+class Domain extends DnsObject
 {
 
     public $id;
@@ -73,7 +73,8 @@ class Domain extends Object
      */
     public function recordList($filter = array())
     {
-        return $this->getParent()->collection('OpenCloud\DNS\Record', null, $this, $filter);
+        $url = $this->url(Record::ResourceName(), $filter);
+        return $this->Parent()->Collection('\OpenCloud\DNS\Record', $url, $this, $filter);
     }
 
     /**
